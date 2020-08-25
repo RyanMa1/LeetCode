@@ -6,24 +6,20 @@
 #memory usage 13.9 mb, beats 36.1% of python3 submissions
 class Solution():
     def backspaceCompare(self, S: str, T: str):
-        stackS = []
-        stackT = []
-        for letter in S:
-            if letter == '#' and len(stackS) > 0:
-                stackS.pop()
-            elif letter == '#' and len(stackS) == 0:
+        ansS = ''.join(self.process(S))
+        ansT = ''.join(self.process(T))
+        return ansS == ansT
+    def process(self, stringN):
+        stack = []
+        for letter in stringN:
+            if letter == '#' and len(stack) > 0:
+                stack.pop()
+            elif letter == '#' and len(stack) == 0:
                 continue
             else:
-                stackS.append(letter)
-        for letter in T:    
-            if letter == '#' and len(stackT) > 0:
-                stackT.pop()
-            elif letter == '#' and len(stackT) == 0:
-                continue
-            else:
-                stackT.append(letter)
-        if ''.join(stackS) == ''.join(stackT):
-            return True
-        return False
+                stack.append(letter)
+        return stack
+
+        
 test = Solution()
 print(test.backspaceCompare(S = "a##c", T = "#a#c"))
