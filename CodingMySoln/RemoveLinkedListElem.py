@@ -23,7 +23,7 @@ class Solution:
         dummy = ListNode(0, head)
         prev = dummy
         curr = head
-        while curr != null:
+        while curr != None:
             if curr.val == val:
                 prev.next = curr.next
             elif curr.val != val:
@@ -31,6 +31,9 @@ class Solution:
             curr = curr.next
             
         return dummy.next
+Sol = Solution()
+head = ListNode()
+Sol.removeElements()
 #For loop implementation of LinkedList
 # class Solution:
 #     def removeElements(self, head: ListNode, target: int) -> ListNode:
